@@ -12,23 +12,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.thumbnail img {
-  max-height:180px;
-  max-width:100%;
-}
-
-.container_main {
-  background-image: url("images/main.jpg");
-  background-size:cover;
-    background-position:center;
-    padding-top:10px;
-    padding-bottom:10px;
-    min-height: 500px;
-}
-
-/* .logo{
-  background-image: url("images/logo.jpg");
-  max-height:30px;
-  max-width:100%;
-} */
