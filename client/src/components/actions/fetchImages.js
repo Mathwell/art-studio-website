@@ -1,4 +1,4 @@
-import { AddArtworks } from './artworkActions'
+import { AddArtwork, AddArtworks, DeleteArtWork } from './artworkActions'
 
 // export function fetchImages() {
 //     let imgs=[]
@@ -22,25 +22,49 @@ import { AddArtworks } from './artworkActions'
       return fetch(`/artworks?q=${query}`)
         .then(response => response.json())
         .then(data => {
-          imgs=data.map(img=>({link: img.url_s, text: img.title, zoom_link: img.url_o, id: img.photo_id}))
-          dispatch({ type: 'FETCH_IMAGES', artworks: imgs })
+          imgs=data.map(img=>({link: img.url_s, text: img.title, zoom_link: img.url_o, id: img.id}))
+          dispatch(AddArtworks(imgs))
         });
     };
   }
 
-  export function postData(data = {}) {
-    //debugger
-    let body = JSON.stringify({artwork: {title: data.title, url_s: data.url_s} })
-     return fetch('/artworks', {
-          method: "POST", // *GET, POST, PUT, DELETE, etc.
-          mode: 'cors',
-          headers: {
-              "Content-Type": "application/json; charset=utf-8",              
-          },          
-          body: body,
-      })
-      .then(response => {response.json()}).catch(err=>console.log(err))
-  }
-
   
+  export function postImage(data={}) {
+    let img;    
+    let body = JSON.stringify({artwork: {title: data.title, url_s: data.url_s} })
+
+    return (dispatch) => {
+      dispatch({ type: "POSTING_IMAGES" });
+      return fetch(`/artworks`, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.        
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",              
+        },          
+        body: body,
+    })
+        .then(response => response.json())
+        .then(data => {
+          img=data.map(img=>({link: img.url_s, text: img.title, zoom_link: img.url_o, id: img.id}))
+          dispatch(AddArtwork(img))
+        });
+    };
+  }
+  
+  
+  export function deleteImage(id) {
+    //debugger
+    return (dispatch) => {
+      dispatch({ type: "POSTING_IMAGES" });
+      return fetch(`/artworks/`+id, {
+        method: "DELETE", // *GET, POST, PUT, DELETE, etc.        
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",              
+        },                  
+    })
+        .then(response => response.json())
+        .then(data => {   
+          dispatch(DeleteArtWork(id))
+        });
+    };
+  }
   

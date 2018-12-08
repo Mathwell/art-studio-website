@@ -7,7 +7,7 @@ export const AddArtwork = artwork=>{
 }
 export const AddArtworks = artworks =>{
     return {
-        type: 'ADD_ARTWORK',
+        type: 'FETCH_IMAGES',
         artworks: artworks
     }
 }

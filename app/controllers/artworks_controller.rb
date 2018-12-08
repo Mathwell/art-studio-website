@@ -20,6 +20,11 @@ class ArtworksController < ApplicationController
     render json: @artwork, status: 201
   end
 
+  def destroy
+    @artwork=Artwork.find(params[:id])
+    @artwork.destroy
+  end
+
   private
   
  

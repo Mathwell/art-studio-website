@@ -18,7 +18,7 @@ class GalleryImage extends React.Component{
               <p>
                   <Button bsStyle="primary" href={this.props.img.zoom_link}>Enlarge</Button>
                   &nbsp;
-                  <Button bsStyle="default" id={this.props.id} href="/comments"> Comments
+                  <Button bsStyle="default" id={this.props.img.id} onClick={event=>this.props.delete(event)} > Delete
                   {/* <Link to='/comments'> Comments </Link> */}
                   </Button> 
               </p>

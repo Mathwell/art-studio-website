@@ -10,14 +10,11 @@ export default function manageArtworks(state = {
     
     switch (action.type) {
         case 'ADD_ARTWORK':
-        const artwork = { text: action.artwork.text, link: action.artwork.link, id: cuidFn() };
+        const artwork = { text: action.artwork.text, link: action.artwork.link };
         return Object.assign({}, state, { 
             artworks: state.artworks.concat(artwork),
         });
-        // case 'ADD_ARTWORKS':
-        // const artworks = action.artworks;
-        // return Object.assign({}, state, { artworks});
-
+        
         case 'FETCH_IMAGES':
         const artworks = action.artworks;
         return Object.assign({}, state, { artworks});        

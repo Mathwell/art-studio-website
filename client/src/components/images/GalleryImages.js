@@ -12,7 +12,7 @@ class GalleryImages extends React.Component{
         const galleryImages = this.props.imgs.map((img, index) => {
             return (
             <Col xs={6} md={4}>
-                 <GalleryImage key={index} img={img} />
+                 <GalleryImage key={index} img={img} delete={this.props.delete} />
             </Col>)
           });
         //debugger

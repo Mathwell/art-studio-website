@@ -2,9 +2,10 @@ import React from 'react'
 //import { ENODATA } from 'constants';
 import {Form, FormGroup, FormControl, ControlLabel, Button, Jumbotron, Col, Grid, Row} from 'react-bootstrap'
 import GalleryImages from '../images/GalleryImages'
-import { fetchImages, postData } from '../actions/fetchImages'
+import { fetchImages, postImage, deleteImage } from '../actions/fetchImages'
 import { connect } from 'react-redux';
 import FieldGroup from './FieldGroup'
+import {AddArtwork} from '../actions/artworkActions'
 
 
 class Gallery extends React.Component {
@@ -31,7 +32,9 @@ class Gallery extends React.Component {
       handleInput = event=>{
         event.preventDefault()
         const jsonData=Object.assign({}, this.state.newArtwork, {title: event.target.children[1].value, url_s: event.target.children[3].value });            
-        postData(jsonData)       
+        this.props.postImage(jsonData)       
+        this.setState({link: "",
+        enterName: "",})
         //debugger
         //add artwork to store
       }
@@ -39,8 +42,15 @@ class Gallery extends React.Component {
       handleClick=event=>{
         event.preventDefault();
         //debugger
-        this.props.fetchImages(event.target.firstChild.children[1].value )                 
-          
+        this.props.fetchImages(event.target.firstChild.children[1].value ) 
+        this.setState({searchName: ""})
+                  
+      }
+
+      handleDelete=event=>{
+        event.preventDefault();
+        //debugger
+        this.props.deleteImage(event.target.id)
       }
       
     render() {
@@ -80,7 +90,7 @@ class Gallery extends React.Component {
 
          <Jumbotron>
            {/* gallery display */}
-            <GalleryImages imgs={this.props.artworks}/> 
+            <GalleryImages imgs={this.props.artworks} delete={this.handleDelete}/> 
           </Jumbotron>
         </div>
       )
@@ -105,4 +115,4 @@ class Gallery extends React.Component {
   };
   
   
-  export default connect(mapStateToProps, {fetchImages})(Gallery);
+  export default connect(mapStateToProps, {fetchImages, postImage, deleteImage})(Gallery);
