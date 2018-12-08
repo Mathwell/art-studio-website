@@ -14,11 +14,12 @@ import { AddArtworks } from './artworkActions'
 //     };
 //   }
 
-  export function fetchImages() {
+  export function fetchImages(query="") {
     let imgs;
+
     return (dispatch) => {
       dispatch({ type: "LOADING_IMAGES" });
-      return fetch(`/artworks`)
+      return fetch(`/artworks?q=${query}`)
         .then(response => response.json())
         .then(data => {
           imgs=data.map(img=>({link: img.url_s, text: img.title, zoom_link: img.url_o, id: img.photo_id}))
@@ -26,3 +27,20 @@ import { AddArtworks } from './artworkActions'
         });
     };
   }
+
+  export function postData(data = {}) {
+    //debugger
+    let body = JSON.stringify({artwork: {title: data.title, url_s: data.url_s} })
+     return fetch('/artworks', {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          mode: 'cors',
+          headers: {
+              "Content-Type": "application/json; charset=utf-8",              
+          },          
+          body: body,
+      })
+      .then(response => {response.json()}).catch(err=>console.log(err))
+  }
+
+  
+  

@@ -18,8 +18,8 @@ class GalleryImage extends React.Component{
               <p>
                   <Button bsStyle="primary" href={this.props.img.zoom_link}>Enlarge</Button>
                   &nbsp;
-                  <Button bsStyle="default" id={this.props.id} href="/comments">
-                   <Link to='/comments'> Comments </Link>
+                  <Button bsStyle="default" id={this.props.id} href="/comments"> Comments
+                  {/* <Link to='/comments'> Comments </Link> */}
                   </Button> 
               </p>
           </Thumbnail>

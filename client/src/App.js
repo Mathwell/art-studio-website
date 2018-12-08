@@ -9,7 +9,7 @@ import logo from './images/logo.jpg'
 class App extends Component {
   render() {
     var icon = (
-      <span class="logo">
+      <span className="logo">
         <a href="/">
           <img src={logo} height="33" width="33" alt="logo" /></a>
       </span>
@@ -43,15 +43,15 @@ class App extends Component {
             <NavItem >
                <Link to="/login">Login</Link>
             </NavItem>            
-            <NavItem >
+            {/* <NavItem >
                <Link to="/theme">Theme</Link>
-            </NavItem>                        
+            </NavItem>                         */}
             <NavItem >
                <Link to="/gallery">Gallery</Link>
             </NavItem>        
-            <NavItem >
+            {/* <NavItem >
                <Link to="/upload">Upload</Link>
-            </NavItem>                        
+            </NavItem>                         */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
