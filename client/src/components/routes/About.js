@@ -1,5 +1,6 @@
 import React from 'react'
-import {Grid, Row, Col, PanelGroup, Panel, Jumbotron} from 'react-bootstrap'
+import {Grid, Row, Col, PanelGroup, Panel, Jumbotron, Image} from 'react-bootstrap'
+import elena from './Elena.jpg'
 
   class About extends React.Component {
     render() {
@@ -49,10 +50,10 @@ Join us for a wonderful, colorful adventure into the world of art. Register toda
         </Panel>
         </PanelGroup>
         </Col>
-        <Col sm={6} md={3}>
+        <Col sm={6} md={6}>
+          <Image src={elena} circle></Image>
         </Col>
-        <Col sm={6} md={3}>
-        </Col>
+        
         
 
         </Row>
