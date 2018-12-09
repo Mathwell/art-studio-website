@@ -6,6 +6,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("images/polka.jpg");
+  background-size:cover;
+    background-position:center;
 }
 
 code {
@@ -19,16 +22,11 @@ code {
 }
 
 .container_main {
-  background-image: url("images/main.jpg");
+  /* background-image: url("images/polka.jpg");
   background-size:cover;
-    background-position:center;
-    padding-top:10px;
+    background-position:center; */
+    /* padding-top:10px;
     padding-bottom:10px;
-    min-height: 500px;
+    min-height: 500px; */
 }
 
-/* .logo{
-  background-image: url("images/logo.jpg");
-  max-height:30px;
-  max-width:100%;
-} */

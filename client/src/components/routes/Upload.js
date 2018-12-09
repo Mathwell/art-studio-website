@@ -1,93 +1,43 @@
 import React from 'react'
 //import {Form, FormControl, FormGroup, HelpBlock, Checkbox, ControlLabel, Radio, Button} from 'react-bootstrap'
 import FieldGroup from './FieldGroup'
+import {Thumbnail, Button} from 'react-bootstrap'
+import { connect } from 'react-redux';
 
 class Upload extends React.Component {
-// FieldGroup({ id, label, help, ...props }) {
-//     return (
-//       <FormGroup controlId={id}>
-//         <ControlLabel>{label}</ControlLabel>
-//         <FormControl {...props} />
-//         {help && <HelpBlock>{help}</HelpBlock>}
-//       </FormGroup>
-//     );
-//   }
-  render(){
-  const formInstance = (
-    <form>
-      {/* <FieldGroup
-        id="formControlsText"
-        type="text"
-        label="Text"
-        placeholder="Enter text"
-      />
-      <FieldGroup
-        id="formControlsEmail"
-        type="email"
-        label="Email address"
-        placeholder="Enter email"
-      /> */}
-      {/* <FieldGroup id="formControlsPassword" label="Password" type="password" /> */}
-      <FieldGroup
-        id="formControlsFile"
-        type="file"
-        label="File"
-        help="Example block-level help text here."
-      />
-  
-      {/* <Checkbox checked readOnly>
-        Checkbox
-      </Checkbox>
-      <Radio checked readOnly>
-        Radio
-      </Radio>
-  
-      <FormGroup>
-        <Checkbox inline>1</Checkbox> <Checkbox inline>2</Checkbox>{' '}
-        <Checkbox inline>3</Checkbox>
-      </FormGroup>
-      <FormGroup>
-        <Radio name="radioGroup" inline>
-          1
-        </Radio>{' '}
-        <Radio name="radioGroup" inline>
-          2
-        </Radio>{' '}
-        <Radio name="radioGroup" inline>
-          3
-        </Radio>
-      </FormGroup>
-  
-      <FormGroup controlId="formControlsSelect">
-        <ControlLabel>Select</ControlLabel>
-        <FormControl componentClass="select" placeholder="select">
-          <option value="select">select</option>
-          <option value="other">...</option>
-        </FormControl>
-      </FormGroup>
-      <FormGroup controlId="formControlsSelectMultiple">
-        <ControlLabel>Multiple select</ControlLabel>
-        <FormControl componentClass="select" multiple>
-          <option value="select">select (multiple)</option>
-          <option value="other">...</option>
-        </FormControl>
-      </FormGroup>
-  
-      <FormGroup controlId="formControlsTextarea">
-        <ControlLabel>Textarea</ControlLabel>
-        <FormControl componentClass="textarea" placeholder="textarea" />
-      </FormGroup>
-  
-      <FormGroup>
-        <ControlLabel>Static text</ControlLabel>
-        <FormControl.Static>email@example.com</FormControl.Static>
-      </FormGroup>
-  
-      <Button type="submit">Submit</Button> */}
-    </form>
-  );
+   render(){
+   
+    const id=this.props.location.search.slice(4)  
+    const artwork=this.props.artworks.find(art => art.id == id);
+    console.log(this.props.artworks)
+    //debugger
     
-     return(formInstance)
+     return(
+      <Thumbnail src={artwork.link} alt="242x200">
+              <h3>{artwork.text}</h3>
+              <p>Description</p>
+              <p>
+                  <Button bsStyle="primary" href={artwork.link}>View</Button>
+                  &nbsp;
+                  <Button bsStyle="default" id={id} > Delete
+                  {/* <Link to='/comments'> Comments </Link> */}
+                  </Button> 
+              </p>
+          </Thumbnail>
+      )
   };
 }
-export default Upload
+
+const mapStateToProps = state => {
+  return {
+      artworks: state.artworks      
+  };
+};
+
+Upload.defaultProps={
+  artworks: [{text: "", link: "", id: ""}]    
+}
+
+
+
+export default connect(mapStateToProps)(Upload);

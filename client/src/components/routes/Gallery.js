@@ -54,6 +54,7 @@ class Gallery extends React.Component {
       }
       
     render() {
+      //debugger
       return (        
         <div>
 

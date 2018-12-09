@@ -19,6 +19,8 @@ class App extends Component {
       <Grid className="container_main">
         <Row>
         <Navbar fluid collapseOnSelect>
+        <div class="container-wrap">
+			  <div class="top-menu">
             <Navbar.Header>
              <Navbar.Brand>
              {/* <Link to="/">
@@ -48,13 +50,19 @@ class App extends Component {
             </NavItem>                         */}
             <NavItem >
                <Link to="/gallery">Gallery</Link>
+            </NavItem>  
+            <NavItem >
+               <Link to="/view">View</Link>
             </NavItem>        
-            {/* <NavItem >
-               <Link to="/upload">Upload</Link>
-            </NavItem>                         */}
+            <NavItem >
+               <Link to="/contact">Contact</Link>
+            </NavItem>                         
           </Nav>
         </Navbar.Collapse>
-      </Navbar>
+     
+      </div>
+      </div>
+       </Navbar>
       <Routes />
       </Row>
       <Row className="image_container">

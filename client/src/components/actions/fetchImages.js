@@ -44,7 +44,8 @@ import { AddArtwork, AddArtworks, DeleteArtWork } from './artworkActions'
     })
         .then(response => response.json())
         .then(data => {
-          img=data.map(img=>({link: img.url_s, text: img.title, zoom_link: img.url_o, id: img.id}))
+          //debugger
+          img={link: data.url_s, text: data.title, zoom_link: data.url_o, id: data.id}
           dispatch(AddArtwork(img))
         });
     };
