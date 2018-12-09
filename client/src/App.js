@@ -51,9 +51,9 @@ class App extends Component {
             <NavItem >
                <Link to="/gallery">Gallery</Link>
             </NavItem>  
-            <NavItem >
+            {/* <NavItem >
                <Link to="/view">View</Link>
-            </NavItem>        
+            </NavItem>         */}
             <NavItem >
                <Link to="/contact">Contact</Link>
             </NavItem>                         

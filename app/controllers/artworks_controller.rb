@@ -20,6 +20,13 @@ class ArtworksController < ApplicationController
     render json: @artwork, status: 201
   end
 
+  def update
+    @artwork=Artwork.find(params[:id])
+    @artwork.update(artwork_params)
+
+    render json:@artwork
+  end
+
   def destroy
     @artwork=Artwork.find(params[:id])
     @artwork.destroy
@@ -33,7 +40,8 @@ class ArtworksController < ApplicationController
    def artwork_params
      params.require(:artwork).permit(
        :title,
-       :url_s
+       :url_s,
+       :url_o
            )
    end
 

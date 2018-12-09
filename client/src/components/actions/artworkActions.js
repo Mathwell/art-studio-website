@@ -26,3 +26,10 @@ export const FetchArtworks = (artworks) =>{
         artworks: artworks
     }
 }
+
+export const ChangeArtwork = (artwork) =>{
+    return {
+        type: 'CHANGE_IMAGE',
+        artworks: artwork
+    }
+}

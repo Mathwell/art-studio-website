@@ -1,6 +1,6 @@
 import React from 'react'
 import {Jumbotron, Grid, Row, Col, Image} from 'react-bootstrap'
-import elena from './Elena.jpg'
+import pic from './paint.jpg'
 
 class Home extends React.Component {
     render() {
@@ -13,14 +13,9 @@ class Home extends React.Component {
         <h2>"A picture is a poem without words."</h2>
         <p align="right"><h3>                        Horace    </h3></p>
         </Jumbotron>
-										{/* <h2>Welcome to Draw to Grow Studio! </h2> */}
-										
-         {/* <Jumbotron>
-           <p><h2>Welcome to Draw To Grow Art Studio!</h2></p>
-           </Jumbotron> */} 
-           </Col>
-          <Col sm={6} md={6}>
-          <Image src={elena} circle ></Image>
+					</Col>
+          <Col sm={6} md={5}>
+          <Image src={pic} responsive ></Image>
          </Col>
           </Row>
           </Grid>

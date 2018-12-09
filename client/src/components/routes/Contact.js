@@ -6,6 +6,27 @@ import FieldGroup from './FieldGroup'
 
 
   class Comments extends React.Component {
+    state = {
+      name: "Enter your name",
+      email: "",
+      town: "",
+      message: ""
+    }
+
+
+    handleChange = event => {
+      //debugger
+      this.setState({
+          [event.target.name]: event.target.value
+      })
+    }
+      
+
+    handleInput = event=>{
+      event.preventDefault()
+      console.log(this.state)
+    }
+
     render() {
       return (
         <div className="container">
@@ -21,31 +42,41 @@ import FieldGroup from './FieldGroup'
                    <Image src={Elena} responsive/>
                  </Col>
                  <Col xs={12} md={6} >
-                 <form>
+                 <form onSubmit={event=>this.handleInput(event)}>
     <FieldGroup
       id="formControlsText"
       type="text"
       label="Name"
-      placeholder="Enter text"
+      name="name"
+      placeholder={this.state.name}
+      onChange={this.handleChange}
     />
     <FieldGroup
       id="formControlsEmail"
       type="email"
       label="Email address"
+      name="email"
       placeholder="Enter email"
+      onChange={this.handleChange}
     />
     
     <FormGroup controlId="formControlsSelect">
       <ControlLabel>Town</ControlLabel>
-      <FormControl componentClass="select" placeholder="select">
+      
+      <FormControl componentClass="select" name="town" placeholder="select"  onChange={this.handleChange}>
         <option value="select">select</option>
-        <option value="other">...</option>
+        <option value="other">Bedford</option>
+        <option value="other">Woburn</option>
+        <option value="other">Lexington</option>
+        <option value="other">Other</option>        
+        
       </FormControl>
 
+
     </FormGroup>
-    <FormGroup controlId="formControlsTextarea">
+    <FormGroup controlId="formControlsTextarea" >
       <ControlLabel>Subject</ControlLabel>
-      <FormControl componentClass="textarea" placeholder="textarea" />
+      <FormControl componentClass="textarea" name="message" placeholder="textarea" onChange={this.handleChange} />
     </FormGroup>
     <Button type="submit">Submit</Button>
 </form>

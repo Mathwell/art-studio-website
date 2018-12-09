@@ -2,7 +2,7 @@ import React from 'react'
 //import { ENODATA } from 'constants';
 import {Image, Thumbnail, Form, FormGroup, FormControl, ControlLabel, Button, Jumbotron, Col, Grid, Row} from 'react-bootstrap'
 import ImageView from '../images/ImageView'
-import { fetchImages, postImage, deleteImage } from '../actions/fetchImages'
+import { fetchImages, postImage, deleteImage, editImage } from '../actions/fetchImages'
 import { connect } from 'react-redux';
 import FieldGroup from './FieldGroup'
 import {AddArtwork} from '../actions/artworkActions'
@@ -10,7 +10,13 @@ import {AddArtwork} from '../actions/artworkActions'
 
 class View extends React.Component {
     state = {          
-       artwork: {author: "", description: "", url_s: "", url_o: "", title: "", photo_id: ""}
+          author: "", 
+          description: "", 
+          url_s: "", 
+          url_o: "", 
+          title: "", 
+          photo_id: "",
+        
         }
 
     handleChange = event => {
@@ -27,10 +33,25 @@ class View extends React.Component {
 
       handleInput = event=>{
         event.preventDefault()
-        const jsonData=Object.assign({}, this.state.newArtwork, {title: event.target.children[1].value, url_s: event.target.children[3].value });            
-        this.props.postImage(jsonData)       
-        this.setState({link: "",
-        enterName: "",})
+        debugger
+        let title, url_s, url_o
+        if (event.target.children[0].lastChild.value!==event.target.children[0].lastChild.placeholder){
+            title=event.target.children[0].lastChild.value
+        } else {title=event.target.children[0].lastChild.placeholder}
+
+        if (event.target.children[1].lastChild.value!==event.target.children[1].lastChild.placeholder){
+            url_s=event.target.children[1].lastChild.value
+        } else {url_s=event.target.children[1].lastChild.placeholder}
+
+        if (event.target.children[2].lastChild.value!==event.target.children[2].lastChild.placeholder){
+            url_o=event.target.children[2].lastChild.value
+        } else {url_o=event.target.children[2].lastChild.placeholder}
+
+        const jsonData=Object.assign({}, this.state, {title: title, url_s: url_s, url_o: url_o, id: event.target.action.slice(30) });            
+        this.props.editImage(jsonData)       
+        this.setState({
+            author: "", description: "", url_s: "", url_o: "", title: "", photo_id: ""
+        })
         //debugger
         //add artwork to store
       }
@@ -52,70 +73,19 @@ class View extends React.Component {
     render() {
       //debugger
       const id=this.props.location.search.slice(4)  
-      const artwork=this.props.artworks.find(art => art.id == id); 
-    //   if (artwork) {
-    //       this.setState({artwork: artwork})
-    //   }      
-      console.log(this.props.artworks)
-      console.log(artwork)
+      const artwork=this.props.artworks.find(art => art.id == id);     
+      //console.log(this.props.artworks)
+      //console.log(artwork)
       return (        
         <div>
 
-          {/* <Grid>
-            <Row>
-              <Col xs={6} md={4}>
-                 
-                  <form onSubmit={event=>this.handleClick(event)}>
-                    <Form inline>
-                      <FormGroup controlId="formInlineName">
-                        <ControlLabel>Name</ControlLabel>{' '}
-                            <input type="text" name="searchName" onChange={event => this.handleChange(event)} value={this.state.searchName} />
-                      </FormGroup>{' '}
-                      <Button type="submit" bsSize="small">Search</Button>
-                    </Form>
-                  </form>
         
-              </Col>
-
-              <Col xs={6} md={8}>
-                 
-                  <form onSubmit={event=>this.handleInput(event)}>
-                        <ControlLabel>Titile</ControlLabel>{' '}
-                        <input type="text" name="enterName" onChange={event => this.handleChange(event)} value={this.state.enterName} /> 
-                        <ControlLabel>Link</ControlLabel>{' '}
-                        <input type="text" name="link" onChange={event => this.handleChange(event)} value={this.state.link} />     
-                        {/* <FieldGroup id="formControlsFile" type="file" label="File"  />                         */}
-                         {/* <Button type="submit" bsSize="small">Add To Gallery</Button>                    
-                  </form>        
-                  
-              </Col>
-            </Row>
-          </Grid>
-
-         <Jumbotron>
-          
-            <GalleryImages imgs={this.props.artworks} delete={this.handleDelete}/> 
-          </Jumbotron> */} 
-          {/* <Thumbnail src={artwork.link} alt="242x200">
-              <h3>{artwork.text}</h3>
-              <p>Description</p>
-              <p>
-                  <Button bsStyle="primary" href={artwork.link}>View</Button>
-                  &nbsp;
-                  <Button bsStyle="default" id={id} > Delete
-                  
-                  </Button> 
-              </p>
-          </Thumbnail> */}
           <Jumbotron>
               
-            <ImageView img={artwork} /> 
+            <ImageView img={artwork} change={this.handleInput} /> 
             
           </Jumbotron>
-          {/* <Jumbotron>
-           {/* gallery display */}
-            {/* <GalleryImages imgs={this.props.artworks} delete={this.handleDelete}/> 
-          </Jumbotron> */} */}
+        
           </div>
       )
     }
@@ -123,9 +93,7 @@ class View extends React.Component {
   
 
       componentDidMount(){
-        // const id=this.props.location.search.slice(4)  
-        // const artwork=this.props.artworks.find(art => art.id == id)
-        // this.setState({artwork: artwork})      
+             
       }
       
 
@@ -140,4 +108,4 @@ class View extends React.Component {
   };
   
   
-  export default connect(mapStateToProps, {fetchImages, postImage, deleteImage})(View);
+  export default connect(mapStateToProps, {fetchImages, postImage, deleteImage, editImage})(View);
