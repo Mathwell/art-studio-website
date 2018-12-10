@@ -100,8 +100,7 @@ class Gallery extends React.Component {
   
 
       componentDidMount(){
-        //this.fetchIMGs()
-        //this.displayIMGs()        
+              
       }
       
 

@@ -96,10 +96,6 @@ class ImageView extends React.Component{
 componentDidMount(){
     //debugger
     this.setState({ name: this.props.img.text, link: this.props.img.link });
-   
-//    const zoom_link=this.props.img.zoom_link
-//     // debugger
-//      this.setState({name: this.props.img.text, link: this.props.img.link})
  }
 
  componentWillReceiveProps(nextProps){

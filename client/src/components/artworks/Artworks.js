@@ -1,7 +1,7 @@
 import React from 'react'
 //import { ENODATA } from 'constants';
 import {Grid, Row, Col} from 'react-bootstrap'
-import GalleryImage from './GalleryImage'
+import GalleryImage from './Artwork'
 
 
 class GalleryImages extends React.Component{
