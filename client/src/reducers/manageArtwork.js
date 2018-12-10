@@ -26,10 +26,11 @@ export default function manageArtworks(state = {
         return Object.assign({}, state, { artworks });
 
         case 'CHANGE_IMAGE':
-        debugger
+        //debugger
         const index = state.artworks.findIndex(art => art.id == action.artwork.id);
         if (index) {state.artworks[index]=action.artwork}
-        return state
+        artworks=state.artworks
+        return Object.assign({}, state, {artworks} )
 
 
         case 'ADD_COMMENT':            

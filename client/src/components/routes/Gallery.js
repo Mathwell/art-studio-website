@@ -1,7 +1,7 @@
 import React from 'react'
 //import { ENODATA } from 'constants';
 import {Form, FormGroup, FormControl, ControlLabel, Button, Jumbotron, Col, Grid, Row} from 'react-bootstrap'
-import GalleryImages from '../images/GalleryImages'
+import GalleryImages from '../artworks/Artworks'
 import { fetchImages, postImage, deleteImage } from '../actions/fetchImages'
 import { connect } from 'react-redux';
 import FieldGroup from './FieldGroup'

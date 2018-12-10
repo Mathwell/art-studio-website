@@ -1,6 +1,6 @@
 import React from 'react'
 import {Grid, Row, Col, PanelGroup, Panel, Jumbotron, Image} from 'react-bootstrap'
-import pic from './logo.jpg'
+import pic from '../../images/logo.jpg'
 
   class About extends React.Component {
     render() {

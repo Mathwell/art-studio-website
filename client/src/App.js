@@ -22,11 +22,7 @@ class App extends Component {
         <div class="container-wrap">
 			  <div class="top-menu">
             <Navbar.Header>
-             <Navbar.Brand>
-             {/* <Link to="/">
-             <Image src={logo} circle />
-             </Link>  */}
-              
+             <Navbar.Brand>                           
               {icon} 
              </Navbar.Brand>
              <Navbar.Toggle />
@@ -45,15 +41,11 @@ class App extends Component {
             <NavItem >
                <Link to="/login">Login</Link>
             </NavItem>            
-            {/* <NavItem >
-               <Link to="/theme">Theme</Link>
-            </NavItem>                         */}
+            
             <NavItem >
                <Link to="/gallery">Gallery</Link>
             </NavItem>  
-            {/* <NavItem >
-               <Link to="/view">View</Link>
-            </NavItem>         */}
+            
             <NavItem >
                <Link to="/contact">Contact</Link>
             </NavItem>                         
@@ -68,8 +60,7 @@ class App extends Component {
       <Row className="image_container">
       </Row>
       </Grid> 
-         {/* <ArtworkInput store={this.props.store} />
-         <Artworks store={this.props.store}/>  */}
+       
       </div>
     );
   }

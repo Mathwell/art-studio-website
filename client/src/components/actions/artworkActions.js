@@ -30,6 +30,6 @@ export const FetchArtworks = (artworks) =>{
 export const ChangeArtwork = (artwork) =>{
     return {
         type: 'CHANGE_IMAGE',
-        artworks: artwork
+        artwork: artwork
     }
 }
