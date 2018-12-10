@@ -74,7 +74,7 @@ class ImageView extends React.Component{
                             type="link"
                             name="zoom_link"
                             label="zoom_Link"
-                            value={this.state.zoom_link}
+                            //value={this.state.zoom_link}
                             placeholder={this.props.img.zoom_link}
                             onChane={this.handleChange}
                         />

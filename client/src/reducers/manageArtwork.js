@@ -23,8 +23,14 @@ export default function manageArtworks(state = {
         case 'DELETE_ARTWORK':
         //debugger
         artworks = state.artworks.filter(art => art.id != action.id);
-    
-            return Object.assign({}, state, { artworks });
+        return Object.assign({}, state, { artworks });
+
+        case 'CHANGE_IMAGE':
+        debugger
+        const index = state.artworks.findIndex(art => art.id == action.artwork.id);
+        if (index) {state.artworks[index]=action.artwork}
+        return state
+
 
         case 'ADD_COMMENT':            
             const comment = Object.assign({}, action.comment, { id: cuidFn() });

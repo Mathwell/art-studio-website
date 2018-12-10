@@ -33,7 +33,7 @@ class View extends React.Component {
 
       handleInput = event=>{
         event.preventDefault()
-        debugger
+        //debugger
         let title, url_s, url_o
         if (event.target.children[0].lastChild.value!==event.target.children[0].lastChild.placeholder){
             title=event.target.children[0].lastChild.value
