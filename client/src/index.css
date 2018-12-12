@@ -16,19 +16,35 @@ code {
     monospace;
 }
 
-.thumbnail img {
+/* .thumbnail img {
   max-height:180px;
   max-width:100%;
+} */
+
+.thumbnail{          
+  width : 100%;
+  height: 400px;  
 }
 
-.container_main {
-  /* background-image: url("images/polka.jpg");
-  background-size:cover;
-    background-position:center; */
-    /* padding-top:10px;
-    padding-bottom:10px;
-    min-height: 500px; */
+.thumbnail img{  
+  max-width: 100%;
+  max-height: 180px;
+  display: block;  
 }
+
+.large-img img{
+  max-width:100%;
+  max-height: 400px;
+  display: block;
+}
+
+.large-img {
+  width:100%;
+  height: 400px;
+}
+
+
+
 
 .darken-with-text h1 {
   margin: 0;  

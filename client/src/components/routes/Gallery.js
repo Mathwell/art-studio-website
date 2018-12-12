@@ -91,7 +91,11 @@ class Gallery extends React.Component {
 
          <Jumbotron>
            {/* gallery display */}
+           <Grid>
+            
             <GalleryImages imgs={this.props.artworks} delete={this.handleDelete}/> 
+            
+            </Grid>
           </Jumbotron>
         </div>
       )

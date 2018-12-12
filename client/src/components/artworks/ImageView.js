@@ -99,6 +99,7 @@ componentDidMount(){
  }
 
  componentWillReceiveProps(nextProps){
+     //debugger
     if(nextProps.img !== this.props.img){
         this.setState({ name: nextProps.img.text, link: nextProps.img.link, zoom_link: nextProps.img.zoom_link, title: nextProps.img.text, img: nextProps.img.zoom_link });
     }
