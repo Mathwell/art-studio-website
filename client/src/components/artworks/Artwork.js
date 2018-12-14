@@ -6,7 +6,7 @@ import ThumbnailView from "./ThumbnailView"
 import ThumbnailImageView from "./ThumbnailImageView"
 
 
-class GalleryImage extends React.Component{
+class Artwork extends React.Component{
     state={
         enlarge: false
     }
@@ -54,8 +54,8 @@ class GalleryImage extends React.Component{
 }
 
 
-GalleryImage.defaultProps={
+Artwork.defaultProps={
     img: [{text: ""}]    
 }
 
-export default GalleryImage
+export default Artwork

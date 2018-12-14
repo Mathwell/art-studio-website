@@ -4,7 +4,7 @@ import {Grid, Row, Col} from 'react-bootstrap'
 import GalleryImage from './Artwork'
 
 
-class GalleryImages extends React.Component{
+class Artworks extends React.Component{
     
 
     render(){
@@ -29,8 +29,8 @@ class GalleryImages extends React.Component{
 
 }}
 
-GalleryImages.defaultProps={
+Artworks.defaultProps={
     imgs: [{link: "", text: ""}, {}, {}]
 }
 
-export default GalleryImages
+export default Artworks

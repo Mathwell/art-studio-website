@@ -7,7 +7,7 @@ class ThumbnailImageView extends PureComponent{
         const link="/view?id="+this.props.img.id
 return(
     <div className="large-img" >
-        <Image  src={this.props.img.zoom_link} href={link} responsive onClick={this.props.click}/>
+        <Image  src={this.props.img.zoomLink} href={link} responsive onClick={this.props.click}/>
     </div>
 )            
     }

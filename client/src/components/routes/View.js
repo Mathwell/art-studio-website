@@ -18,8 +18,8 @@ class View extends React.Component {
    
       handleInput = event=>{
         event.preventDefault()        
-        let title=event.target.children[0].lastChild.value , url_s=event.target.children[1].lastChild.value, url_o=event.target.children[2].lastChild.value        
-        const jsonData=Object.assign({}, this.state, {title: title, url_s: url_s, url_o: url_o, id: event.target.action.slice(30) });            
+        let text=event.target.children[0].lastChild.value , link=event.target.children[1].lastChild.value, zoomLink=event.target.children[2].lastChild.value        
+        const jsonData=Object.assign({}, this.state, {text: text, link: link, zoomLink: zoomLink, id: event.target.action.slice(30) });            
         this.props.editImage(jsonData)                 
       }
      

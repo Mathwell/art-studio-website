@@ -11,7 +11,7 @@ class ImageView extends React.Component{
        
             name: "",
             link: "",
-            zoom_link: "",
+            zoomLink: "",
             title:  "",           
             img: "",
       }
@@ -29,7 +29,7 @@ class ImageView extends React.Component{
         handleClick = event=>{
          this.setState({
            title: this.state.name,
-           img: this.state.zoom_link
+           img: this.state.zoomLink
          })        
         }
 
@@ -71,10 +71,10 @@ class ImageView extends React.Component{
                          <FieldGroup
                             id="formControlsEmail"
                             type="link"
-                            name="zoom_link"
-                            label="zoom_Link"
-                            value={this.state.zoom_link}
-                            placeholder={this.props.img.zoom_link}
+                            name="zoomLink"
+                            label="zoomLink"
+                            value={this.state.zoomLink}
+                            placeholder={this.props.img.zoomLink}
                             onChange={this.handleChange}
                         />
                   
@@ -101,7 +101,7 @@ componentDidMount(){
  componentWillReceiveProps(nextProps){
      //debugger
     if(nextProps.img !== this.props.img){
-        this.setState({ name: nextProps.img.text, link: nextProps.img.link, zoom_link: nextProps.img.zoom_link, title: nextProps.img.text, img: nextProps.img.zoom_link });
+        this.setState({ name: nextProps.img.text, link: nextProps.img.link, zoomLink: nextProps.img.zoomLink, title: nextProps.img.text, img: nextProps.img.zoomLink });
     }
 }
 

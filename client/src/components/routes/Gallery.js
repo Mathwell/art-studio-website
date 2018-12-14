@@ -14,7 +14,7 @@ class Gallery extends React.Component {
       searchName: "",
       enterName: "",
       link: "",
-      newArtwork: {author: "", description: "", url_s: "", url_o: "", title: "", photo_id: "", id: 10}
+      newArtwork: {author: "", description: "", link: "", zoomLink: "", title: "", photoId: "", id: 10}
     }
 
     handleChange = event => {
@@ -31,7 +31,7 @@ class Gallery extends React.Component {
 
       handleInput = event=>{
         event.preventDefault()
-        const jsonData=Object.assign({}, this.state.newArtwork, {title: event.target.children[1].value, url_s: event.target.children[3].value });       
+        const jsonData=Object.assign({}, this.state.newArtwork, {text: event.target.children[1].value, link: event.target.children[3].value });       
         console.log("LOG A")      
         this.props.postImage(jsonData)    
         console.log("LOG B")   

@@ -9,7 +9,7 @@ import { AddArtwork, AddArtworks, DeleteArtWork, ChangeArtwork } from './artwork
       return fetch(`/artworks?q=${query}`)
         .then(response => response.json())
         .then(data => {
-          imgs=data.map(img=>({link: img.url_s, text: img.title, zoom_link: img.url_o, id: img.id}))
+          imgs=data.map(img=>({link: img.url_s, text: img.title, zoomLink: img.url_o, id: img.id}))
           dispatch(AddArtworks(imgs))
         });
     };
@@ -18,7 +18,7 @@ import { AddArtwork, AddArtworks, DeleteArtWork, ChangeArtwork } from './artwork
   
   export function postImage(data={}) {
     let img;    
-    let body = JSON.stringify({artwork: {title: data.title, url_s: data.url_s} })
+    let body = JSON.stringify({artwork: {title: data.text, url_s: data.link} })
     console.log("LOG C") 
     return (dispatch) => {
       dispatch({ type: "POSTING_IMAGES" });
@@ -33,7 +33,7 @@ import { AddArtwork, AddArtworks, DeleteArtWork, ChangeArtwork } from './artwork
         .then(data => {
           //debugger
           console.log("LOG D")
-          img={link: data.url_s, text: data.title, zoom_link: data.url_o, id: data.id}
+          img={link: data.url_s, text: data.title, zoomLink: data.url_o, id: data.id}
           dispatch(AddArtwork(img))
         });
     };
@@ -60,7 +60,7 @@ import { AddArtwork, AddArtworks, DeleteArtWork, ChangeArtwork } from './artwork
 
   export function editImage(data={}) {
     let img;    
-    let body = JSON.stringify({artwork: {title: data.title, url_s: data.url_s, url_o: data.url_o} })
+    let body = JSON.stringify({artwork: {title: data.text, url_s: data.link, url_o: data.zoomLink} })
     //debugger
     return (dispatch) => {
       dispatch({ type: "POSTING_CHANGES" });
@@ -74,7 +74,7 @@ import { AddArtwork, AddArtworks, DeleteArtWork, ChangeArtwork } from './artwork
         .then(response => response.json())
         .then(data => {
           //debugger
-          img={link: data.url_s, text: data.title, zoom_link: data.url_o, id: data.id}
+          img={link: data.url_s, text: data.title, zoomLink: data.url_o, id: data.id}
           dispatch(ChangeArtwork(img))
         });
     };
