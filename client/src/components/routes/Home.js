@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {PureComponent} from 'react'
 import {Jumbotron, Grid, Row, Col, Image} from 'react-bootstrap'
 import pic from '../../images/paint.jpg'
 
-class Home extends React.Component {
+class Home extends PureComponent {
     render() {
       return (
         <div>

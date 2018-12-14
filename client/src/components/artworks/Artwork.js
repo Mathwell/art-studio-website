@@ -1,7 +1,9 @@
 import React from 'react'
 //import { ENODATA } from 'constants';
-import {Thumbnail, Button, Image, Col} from 'react-bootstrap'
-import { Link } from "react-router-dom";
+//import {Thumbnail, Button, Image, Col} from 'react-bootstrap'
+//import { Link } from "react-router-dom";
+import ThumbnailView from "./ThumbnailView"
+import ThumbnailImageView from "./ThumbnailImageView"
 
 
 class GalleryImage extends React.Component{
@@ -14,55 +16,43 @@ class GalleryImage extends React.Component{
 
     }
 
+    handleMouseEnter=()=>{
+        this.setState({enlarge: true})
+
+    }
+
+    handleMouseLeave=()=>{
+        this.setState({enlarge: false})
+
+    }
+
     render(){
 
         const link="/view?id="+this.props.img.id
         //const Test = () => { return( <div> hi </div> ) };
+
         const Img= () => { 
-        if ( this.state.enlarge) {
-            return(
-            <div className="large-img">
-                 <Image  src={this.props.img.zoom_link} responsive onClick={this.handleClick}/>
-            </div>
+            if ( this.state.enlarge) {
+                return(
+                    
+                    <ThumbnailImageView img={this.props.img} click={this.handleClick}/>
             )            
-       }
-       else {
-           return(
-            <Thumbnail src={this.props.img.link} alt="242x200" onClick={this.handleClick}>
-            <h3>{this.props.img.text}</h3>
-            <p>Description</p>
-            <p>
-                <Button bsStyle="primary" href={link}>View</Button>
-                &nbsp;
-                <Button bsStyle="default" id={this.props.img.id} onClick={event=>this.props.delete(event)} > Delete
-                {/* <Link to='/comments'> Comments </Link> */}
-                </Button> 
-            </p>
-        </Thumbnail>
-           )
+                }
+            else {
+                return ( 
+                  
+                    <ThumbnailView img={this.props.img} delete={this.props.delete} click={this.handleClick}/>
+               )
+                
        }
     }
-       //debugger
-        return(
-
-        //  <Thumbnail src={this.props.img.link} alt="242x200" onClick={this.handleClick}>
-        //       <h3>{this.props.img.text}</h3>
-        //       <p>Description</p>
-        //       <p>
-        //           <Button bsStyle="primary" href={link}>View</Button>
-        //           &nbsp;
-        //           <Button bsStyle="default" id={this.props.img.id} onClick={event=>this.props.delete(event)} > Delete
-        //           {/* <Link to='/comments'> Comments </Link> */}
-        //           </Button> 
-        //       </p>
-        //   </Thumbnail>
-       
-        <Img />
-       
-         
+     
+        return(       
+          <Img />               
         )
 }
 }
+
 
 GalleryImage.defaultProps={
     img: [{text: ""}]    

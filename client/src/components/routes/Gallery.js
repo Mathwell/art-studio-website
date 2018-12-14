@@ -31,8 +31,10 @@ class Gallery extends React.Component {
 
       handleInput = event=>{
         event.preventDefault()
-        const jsonData=Object.assign({}, this.state.newArtwork, {title: event.target.children[1].value, url_s: event.target.children[3].value });            
-        this.props.postImage(jsonData)       
+        const jsonData=Object.assign({}, this.state.newArtwork, {title: event.target.children[1].value, url_s: event.target.children[3].value });       
+        console.log("LOG A")      
+        this.props.postImage(jsonData)    
+        console.log("LOG B")   
         this.setState({link: "",
         enterName: "",})
         //debugger

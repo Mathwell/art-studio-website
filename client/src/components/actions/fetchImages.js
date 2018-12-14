@@ -19,7 +19,7 @@ import { AddArtwork, AddArtworks, DeleteArtWork, ChangeArtwork } from './artwork
   export function postImage(data={}) {
     let img;    
     let body = JSON.stringify({artwork: {title: data.title, url_s: data.url_s} })
-
+    console.log("LOG C") 
     return (dispatch) => {
       dispatch({ type: "POSTING_IMAGES" });
       return fetch(`/artworks`, {
@@ -32,10 +32,12 @@ import { AddArtwork, AddArtworks, DeleteArtWork, ChangeArtwork } from './artwork
         .then(response => response.json())
         .then(data => {
           //debugger
+          console.log("LOG D")
           img={link: data.url_s, text: data.title, zoom_link: data.url_o, id: data.id}
           dispatch(AddArtwork(img))
         });
     };
+    console.log("LOG E")
   }
   
   

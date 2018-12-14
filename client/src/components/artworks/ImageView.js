@@ -9,11 +9,11 @@ class ImageView extends React.Component{
       
     state = {
        
-            name: this.props.img.text,
-            link: this.props.img.link,
-            zoom_link: this.props.img.zoom_link,
-            title:  this.props.img.text,           
-            img: this.props.img.zoom_link,
+            name: "",
+            link: "",
+            zoom_link: "",
+            title:  "",           
+            img: "",
       }
 
    
